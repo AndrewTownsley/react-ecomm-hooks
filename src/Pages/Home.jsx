@@ -1,13 +1,13 @@
 import React from 'react';
 import ProductList from '../components/ProductList';
-import Filters from '../components/Filters';
+// import Filters from '../components/Filters';
 
 
 const Home = () => {
 
     return (
         <div className='Home'>
-            <Filters/>
+            {/* <Filters/> */}
             <ProductList/>
         </div>
     )

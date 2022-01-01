@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Rating from './Rating'
+import { CartState } from '../Context/Context';
 
 const Filters = () => {
+    const { state: { cart, setCart }} = CartState();
     const [nextDay, setNextDay] = useState(false);
     const [outOfStock, setOutOfStock] = useState(false);
+
+    // useEffect(() => {
+    //     const sortProductPrice = () => {
+    //         setCart(cart.sort((a,b) => a.price - b.price))
+    //     }
+    //     sortProductPrice();
+    // }, [cart, setCart])
 
     return (
         <div className='Filters'>
@@ -11,11 +20,11 @@ const Filters = () => {
             <ul>
                 <label htmlFor="priceAscend">
                     Price: low to high
-                    <input type="radio" />
+                    <input name="price-sort" type="radio" />
                 </label>
                 <label htmlFor="priceDescend">
                     Price: high to low
-                    <input type="radio" />
+                    <input name="price-sort" type="radio" />
                 </label>
                 <label htmlFor="nextDay">
                     Next Day Delivery
