@@ -17,10 +17,10 @@ const Context = ({ children }) => {
     rating: faker.random.arrayElement([1,2,3,4,5]),
   }));
 
-  // const [state, dispatch] = useReducer(cartReducer, {
-  //   productsArray: productsArray,
-  //   cart: [],
-  // })
+  const [state, dispatch] = useReducer(cartReducer, {
+    productsArray: productsArray,
+    cart: [],
+  })
 
   const [productsArray] = useState(products);
 
