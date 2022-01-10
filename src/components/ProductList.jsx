@@ -4,18 +4,18 @@ import { CartState } from '../Context/Context';
 
 const ProductList = () => {
     const { productsArray } = CartState();
-    console.log(productsArray);
     return (
-        <div className="product-list" >
+            
+            <div className="product-list" >
         {
             productsArray.map((product, index) => (
-               <ProductDetail 
+                <ProductDetail 
                 id={product.id} 
-                key={index} 
+                key={product.id} 
                 product={product}
                 />
-            ))
-        }
+                ))
+            }
     </div>
     )
 }

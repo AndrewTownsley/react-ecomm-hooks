@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CartState } from '../Context/Context';
 
 const Header = () => {
-    const { cart, setCart} = CartState();
+    const { state: {cart}} = CartState();
 
     return (
         <div className='header'>

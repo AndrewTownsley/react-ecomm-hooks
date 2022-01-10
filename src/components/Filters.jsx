@@ -4,8 +4,9 @@ import { CartState } from '../Context/Context';
 
 const Filters = () => {
     const { state: { cart, setCart }} = CartState();
-    const [nextDay, setNextDay] = useState(false);
-    const [outOfStock, setOutOfStock] = useState(false);
+    const [rate, setRate] = useState(3);
+    // const [nextDay, setNextDay] = useState(false);
+    // const [outOfStock, setOutOfStock] = useState(false);
 
     // useEffect(() => {
     //     const sortProductPrice = () => {
@@ -29,16 +30,20 @@ const Filters = () => {
                 <label htmlFor="nextDay">
                     Next Day Delivery
                     <input 
-                        onChange={() => setNextDay(true)} 
+                        // onChange={() => setNextDay(true)} 
                         type="checkbox" />
                 </label>
                 <label htmlFor="outOfStock">
                     Show out of stock items
                     <input 
-                        onChange={() => setOutOfStock(true)} 
+                        // onChange={() => setOutOfStock(true)} 
                         type="checkbox" />
                 </label>
-                <Rating />
+                <Rating
+                    onClick={(i) => setRate(i + 1)}
+                    rate={rate}
+                    setRate={setRate}
+                />
             </ul>
         </div>
     )

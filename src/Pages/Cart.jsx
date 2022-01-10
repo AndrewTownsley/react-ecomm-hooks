@@ -2,10 +2,14 @@ import React, { useState, useEffect, useContext } from 'react'
 import CartItem from '../components/CartItem';
 import { CartState } from '../Context/Context';
 
-const Cart = ({ product }) => {
+const Cart = () => {
     const [total, setTotal] = useState("0");
-    const {cart, setCart} = CartState();
-    console.log(cart);
+    const {state: {
+            cart,
+            setCart,    
+            dispatch
+        }} = CartState();
+    console.log("Cart: ",cart);
 
     useEffect(() => {
         setTotal(cart.reduce((a, b) => a + Number(b.price), 0))
@@ -20,7 +24,11 @@ const Cart = ({ product }) => {
             <div className="product-container">
                 {
                     cart.map((product, index) => (
-                        <CartItem key={index} product={product} cart={cart} setCart={setCart} />
+                        <CartItem 
+                            key={index} 
+                            product={product} 
+                            cart={cart} 
+                            setCart={setCart} />
                     ))
                 }
             </div>
