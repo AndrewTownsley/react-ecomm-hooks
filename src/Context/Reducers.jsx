@@ -30,7 +30,6 @@ export const productReducer = (state, action) => {
                 byStock: false,
                 byNextDay: false,
                 byRating: 0,
-                searchQuery: "",
             }
     
         default:

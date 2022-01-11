@@ -3,13 +3,16 @@ import { CartState } from '../Context/Context';
 
 const Filters = () => {
     const { productState: {
+        sort,
         byStock,
         byNextDay,
         byRating,
-        searchQuery,
     }, productDispatch } = CartState();
 
-    console.log(byRating);
+    console.log("sort: ",sort);
+    console.log("byStock: ", byStock);
+    console.log("byNextDay: ", byNextDay);
+    console.log("byRating: ", byRating);
 
     return (
         <div className='Filters'>
@@ -17,21 +20,66 @@ const Filters = () => {
             <ul>
                 <label htmlFor="priceAscend">
                     Price: low to high
-                    <input name="price-sort" type="radio" />
+                    <input onChange={() => 
+                        productDispatch({
+                            type: "SORT_BY_PRICE",
+                            payload: "lowToHigh",
+                        })
+                    }
+                        name="sortGroup"
+                        id="radioSortLow"
+                        type="radio" 
+                        checked={sort === "lowToHigh" ? true : false}
+                    />
                 </label>
+                {/* /////////////////////////////////////////////
+                /////////////////////////////////////////////
+                /////////////////////////////////////////////
+                /////////////////////////////////////////////
+                NEED TO FIGURE OUT WHY THE FIRST RADIO BUTTON STAYS CHECKED, 
+                AND WHY THE SECOND ONE CANNOT BE CHECKED.
+                /////////////////////////////////////////////
+                /////////////////////////////////////////////
+                /////////////////////////////////////////////
+                /////////////////////////////////////////////
+                ///////////////////////////////////////////// */}
                 <label htmlFor="priceDescend">
                     Price: high to low
-                    <input name="price-sort" type="radio" />
+                    <input onChange={() => 
+                        productDispatch({
+                            type: "SORT_BY_PRICE",
+                            payload: "lowToHigh",
+                        })
+                    }
+                        name="sortGroup"
+                        id="radioSortHigh" 
+                        type="radio"
+                        checked={sort === "highToLow" ? true : false} 
+                    />
                 </label>
                 <label htmlFor="nextDay">
                     Next Day Delivery
                     <input 
-                        type="checkbox" />
+                        onClick={() => 
+                            productDispatch({
+                                type: "FILTER_BY_DELIVERY"
+                            })
+                        }
+                        type="checkbox" 
+                        checked={byNextDay}
+                    />
                 </label>
                 <label htmlFor="outOfStock">
                     Show out of stock items
                     <input 
-                        type="checkbox" />
+                        onChange={() => 
+                            productDispatch({
+                                type: "FILTER_BY_STOCK"
+                            })
+                        }
+                        type="checkbox" 
+                        checked={byStock}
+                    />
                 </label>
                 <label htmlFor="rating">Rating: </label>
                 <Rating
@@ -42,6 +90,13 @@ const Filters = () => {
                             payload: i + 1,
                     })}
                 />
+                {/* <button onClick={() => 
+                    productDispatch({
+                        type: "CLEAR_FILTERS",
+                        payload: 
+                    })
+                }>Clear Filters
+                </button> */}
             </ul>
         </div>
     )
