@@ -3,7 +3,7 @@ import { CartState } from '../Context/Context';
 
 
 const CartItem = ({ product }) => {
-    const { cart, setCart, prodCartQuantity, setProdCartQuantity } = CartState();
+    const { dispatch, cart, setCart, prodCartQuantity, setProdCartQuantity } = CartState();
 
     return (
         <div>
@@ -20,7 +20,18 @@ const CartItem = ({ product }) => {
                 <div>
 
                     Quantity: {cart.length}
-                        <select name="productQuantity" id="productQuantity">
+                        <select 
+                            onChange={(e) => 
+                                dispatch({
+                                    type: "UPDATE_CART_QUANTITY",
+                                    payload: {
+                                        id: product.id,
+                                        qty: e.target.value,
+                                    }
+                                })}
+                            name="productQuantity" 
+                            id="productQuantity"
+                        >
                            {
                                [...Array(product.inStock).keys()].map((x) => (
                                    <option key={x + 1}>{x + 1}</option>
@@ -28,7 +39,11 @@ const CartItem = ({ product }) => {
                            }
                         </select>
                 </div>
-                <button onClick={() => setCart(cart.filter((c) => c.id !== product.id))}>Remove Item</button>
+                <button onClick={() => 
+                dispatch({
+                    type: "REMOVE_FROM_CART",
+                    payload: product,
+                })}>Remove Item</button>
             </section>
         </div>
     )
