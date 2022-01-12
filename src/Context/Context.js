@@ -7,13 +7,13 @@ faker.seed(100);
 
 const Context = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [prodCartQuantity, setProdCartQuantity] = useState(0);
+  const [prodCartQuantity, setProdCartQuantity] = useState(1);
 
   const productsArray = [...Array(60)].map((p) => ({
     id: faker.datatype.uuid(),
     name: faker.commerce.productName(),
     price: faker.commerce.price(),
-    inStock: faker.random.arrayElement([0,3,4,5,6,7,25,47,68,73,84]),
+    inStock: faker.random.arrayElement([0,0,3,4,5,6,7,25,47,68,73,84]),
     nextDay: faker.datatype.boolean(),
     rating: faker.random.arrayElement([1,2,3,4,5]),
   }));

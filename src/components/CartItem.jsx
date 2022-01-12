@@ -21,6 +21,7 @@ const CartItem = ({ product }) => {
 
                     Quantity: {cart.length}
                         <select 
+                            value={product.prodCartQuantity}
                             onChange={(e) => 
                                 dispatch({
                                     type: "UPDATE_CART_QUANTITY",
@@ -33,17 +34,25 @@ const CartItem = ({ product }) => {
                             id="productQuantity"
                         >
                            {
-                               [...Array(product.inStock).keys()].map((x) => (
+                               product.inStock > 0 ? 
+                               ([...Array(product.inStock).keys()].map((x) => (
                                    <option key={x + 1}>{x + 1}</option>
-                               ))
+                               )))
+                               :
+                               <option>0</option>
+
                            }
                         </select>
+                        <button>Update</button>
                 </div>
                 <button onClick={() => 
                 dispatch({
                     type: "REMOVE_FROM_CART",
                     payload: product,
-                })}>Remove Item</button>
+                })}
+                >
+                    Remove Item
+                </button>
             </section>
         </div>
     )

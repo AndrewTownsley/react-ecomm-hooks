@@ -14,14 +14,15 @@ const ProductDetail = ({ product }) => {
             product.nextDay ? <p>Next Day Shipping</p> : null
           }
           <p>Rating: {product.rating}/5</p>
-                {cart.includes(product) ?
+                {cart.some(p => p.id === product.id) ?
                   (
                   <button
                   // className="add remove" 
                   onClick={() => 
                     dispatch({
                       type: 'REMOVE_FROM_CART',
-                      payload: product})}>
+                      payload: product})}
+                  >
                     Remove from Cart
                   </button>
                     ) 
@@ -32,7 +33,8 @@ const ProductDetail = ({ product }) => {
                     onClick={() => 
                         dispatch({
                           type: 'ADD_TO_CART',
-                          payload: product})}>
+                          payload: product})}
+                  >
                     Add to Cart
                   </button>
                 )}

@@ -7,12 +7,13 @@ const Cart = () => {
     const {state: {
             cart,
             setCart,    
-            dispatch
+            dispatch,
+            prodCartQuantity
         }} = CartState();
-    console.log("Cart: ",cart);
+    console.log(prodCartQuantity);
 
     useEffect(() => {
-        setTotal(cart.reduce((a, b) => a + Number(b.price), 0))
+        setTotal(cart.reduce((a, b) => a + Number(b.price) * Number(b.qty), 0))
     }, [cart])
 
 
@@ -25,6 +26,7 @@ const Cart = () => {
                 {
                     cart.map((product, index) => (
                         <CartItem 
+                            prodCartQuantity={prodCartQuantity}
                             key={index} 
                             product={product} 
                             cart={cart} 
