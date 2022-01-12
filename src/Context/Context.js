@@ -9,7 +9,7 @@ const Context = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [prodCartQuantity, setProdCartQuantity] = useState(0);
 
-  const productsArray = [...Array(20)].map((p) => ({
+  const productsArray = [...Array(60)].map((p) => ({
     id: faker.datatype.uuid(),
     name: faker.commerce.productName(),
     price: faker.commerce.price(),

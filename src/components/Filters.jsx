@@ -1,4 +1,6 @@
 import Rating from './Rating'
+import { useState } from "react";
+
 import { CartState } from '../Context/Context';
 
 const Filters = () => {
@@ -32,23 +34,13 @@ const Filters = () => {
                         checked={sort === "lowToHigh" ? true : false}
                     />
                 </label>
-                {/* /////////////////////////////////////////////
-                /////////////////////////////////////////////
-                /////////////////////////////////////////////
-                /////////////////////////////////////////////
-                NEED TO FIGURE OUT WHY THE FIRST RADIO BUTTON STAYS CHECKED, 
-                AND WHY THE SECOND ONE CANNOT BE CHECKED.
-                /////////////////////////////////////////////
-                /////////////////////////////////////////////
-                /////////////////////////////////////////////
-                /////////////////////////////////////////////
-                ///////////////////////////////////////////// */}
+      
                 <label htmlFor="priceDescend">
                     Price: high to low
                     <input onChange={() => 
                         productDispatch({
                             type: "SORT_BY_PRICE",
-                            payload: "lowToHigh",
+                            payload: "highToLow",
                         })
                     }
                         name="sortGroup"
@@ -90,13 +82,12 @@ const Filters = () => {
                             payload: i + 1,
                     })}
                 />
-                {/* <button onClick={() => 
+                <button onClick={() => 
                     productDispatch({
                         type: "CLEAR_FILTERS",
-                        payload: 
                     })
                 }>Clear Filters
-                </button> */}
+                </button>
             </ul>
         </div>
     )

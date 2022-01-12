@@ -8,10 +8,10 @@
   margin: 0;
 }
 
-/* .Home {
+.Home {
   display: grid;
   grid-template-columns: 20% 80%;
-} */
+} 
 
 .header {
   margin: 0;
