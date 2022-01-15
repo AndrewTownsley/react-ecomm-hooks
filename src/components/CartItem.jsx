@@ -43,7 +43,6 @@ const CartItem = ({ product }) => {
 
                            }
                         </select>
-                        <button>Update</button>
                 </div>
                 <button onClick={() => 
                 dispatch({

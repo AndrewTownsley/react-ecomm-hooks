@@ -2,7 +2,7 @@ import { CartState } from '../Context/Context';
 
 const ProductDetail = ({ product }) => {
   const {
-      state: { cart, setCart },
+      state: { cart },
       dispatch,
   } = CartState();
 
